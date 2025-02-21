@@ -17,7 +17,7 @@ abstract class Bolo implements IBolo {
 
     @Override
     public double preco() {
-        return 0;
+        return custo * formato.area(); // Calcula o preço do bolo
     }
 
     public int getCodigo() {
@@ -38,7 +38,9 @@ abstract class Bolo implements IBolo {
 
         if (obj != null && obj instanceof Bolo) {
             Bolo bolo = (Bolo) obj;
-            if (this.codigo == bolo.codigo && this.custo == bolo.custo && this.formato.equals(bolo.formato)) {
+            // if (this.codigo == bolo.codigo && this.custo == bolo.custo &&
+            // this.formato.equals(bolo.formato)) {
+            if (this.codigo == bolo.codigo) {
                 resultado = true;
             }
         }

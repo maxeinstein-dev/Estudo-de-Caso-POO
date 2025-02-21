@@ -14,52 +14,67 @@ public class VetorPrateleira implements IPrateleira {
 
     @Override
     public int buscar(IBolo bolo) {
-        return 0;
+        return prateleira.indexOf(bolo);
     }
 
     @Override
     public boolean cheia() {
-        return false;
+        return prateleira.size() >= qtdBolo;
     }
 
     @Override
     public boolean vazia() {
-        return false;
+        return prateleira.isEmpty();
     }
 
     @Override
     public boolean existe(IBolo bolo) {
-        return false;
+        return prateleira.contains(bolo);
     }
 
     @Override
     public boolean inserir(IBolo bolo) {
-        return false;
+        if (cheia())
+            return false;
+        if (existe(bolo))
+            System.out.println("Bolo já cadastrado");
+        return prateleira.add(bolo);
     }
 
     @Override
     public IBolo remover(IBolo bolo) {
-        return null;
+        return prateleira.remove(bolo) ? bolo : null;
     }
 
     @Override
-    public IBolo remover(int qtd) {
+    public IBolo remover(int posicao) {
+        if (posicao >= 0 && posicao < prateleira.size()) {
+            return prateleira.remove(posicao);
+        }
+        System.out.println("Bolo inexistente");
         return null;
     }
 
     @Override
     public IBolo consultar(IBolo bolo) {
-        return null;
+        int index = buscar(bolo);
+        return index >= 0 ? prateleira.get(index) : null;
     }
 
     @Override
     public ArrayList<IBolo> listar() {
-        return null;
+        return new ArrayList<>(prateleira);
     }
 
     @Override
-    public ArrayList<IBolo> listar(char x) {
-        return null;
+    public ArrayList<IBolo> listar(char tipoDoBolo) {
+        ArrayList<IBolo> resultado = new ArrayList<>();
+        for (IBolo bolo : prateleira) {
+            if ((tipoDoBolo == 'S' && bolo instanceof BoloSimples) || (tipoDoBolo == 'T' && bolo instanceof Torta)) {
+                resultado.add(bolo);
+            }
+        }
+        return resultado;
     }
 
 }

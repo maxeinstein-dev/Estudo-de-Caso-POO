@@ -4,6 +4,7 @@ public class BoloSimples extends Bolo {
 
     public BoloSimples(int codigo, double custo, IFormato formato) {
         super(codigo, custo, formato);
+        this.semLactose = false; // Por padrão, o bolo simples é com lactose
     }
 
     public BoloSimples(int codigo, double custo, IFormato formato, boolean semLactose) {
@@ -16,7 +17,8 @@ public class BoloSimples extends Bolo {
     }
 
     public double preco() {
-        return 0;
+        double precoBase = super.preco();
+        return semLactose ? precoBase + 35 : precoBase;
     }
 
     @Override

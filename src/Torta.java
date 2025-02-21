@@ -5,6 +5,8 @@ public class Torta extends Bolo {
 
     public Torta(int codigo, double custo, IFormato formato) {
         super(codigo, custo, formato);
+        this.recheio = true; // Por padrão, a torta tem recheio
+        this.cobertura = true; // Por padrão, a torta tem cobertura
     }
 
     public Torta(int codigo, double custo, IFormato formato, boolean recheio, boolean cobertura) {
@@ -14,7 +16,12 @@ public class Torta extends Bolo {
     }
 
     public double preco() {
-        return 0;
+        double precoBase = super.preco();
+        if (recheio)
+            precoBase += 12.5;
+        if (cobertura)
+            precoBase += 20;
+        return precoBase;
     }
 
     @Override
