@@ -1,23 +1,37 @@
-abstract class Bolo implements IBolo {
+abstract class Bolo implements IBolo, IFormato {
 
-    final int codigo;
-    final double custo;
-    final IFormato formato;
+    private int codigo;
+    private double custo;
+    private String formato; // quadrado, retangular ou circular
 
-    // public Bolo(int codigo, double custo) { ?
-    // this.codigo = codigo;
+    // public Bolo(double custo) {
+    // this.codigo = contador++;
     // this.custo = custo;
     // }
 
-    public Bolo(int codigo, double custo, IFormato formato) {
-        this.codigo = codigo;
-        this.custo = custo;
-        this.formato = formato;
+    public Bolo(int codigo, double custo, String formato) {
+        setCodigo(codigo);
+        setCusto(custo);
+        setFormato(formato);
     }
 
     @Override
     public double preco() {
-        return custo * formato.area(); // Calcula o preço do bolo
+        double precoBase = custo;
+
+        switch (formato) {
+            case "retangular":
+                precoBase += 1.2;
+                break;
+            case "circular":
+                precoBase += 1.5;
+                break;
+            case "quadrado":
+                break;
+            default:
+                break;
+        }
+        return precoBase; // Calcula o preço do bolo pelo formato
     }
 
     public int getCodigo() {
@@ -28,8 +42,20 @@ abstract class Bolo implements IBolo {
         return custo;
     }
 
-    public IFormato getFormato() {
+    public String getFormato() {
         return formato;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setCusto(double custo) {
+        this.custo = custo;
+    }
+
+    public void setFormato(String formato) {
+        this.formato = formato;
     }
 
     @Override
@@ -38,8 +64,6 @@ abstract class Bolo implements IBolo {
 
         if (obj != null && obj instanceof Bolo) {
             Bolo bolo = (Bolo) obj;
-            // if (this.codigo == bolo.codigo && this.custo == bolo.custo &&
-            // this.formato.equals(bolo.formato)) {
             if (this.codigo == bolo.codigo) {
                 resultado = true;
             }

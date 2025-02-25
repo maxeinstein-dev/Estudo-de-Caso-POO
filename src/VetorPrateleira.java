@@ -10,8 +10,6 @@ public class VetorPrateleira implements IPrateleira {
         this.qtdBolo = qtdBolo;
     }
 
-    // public VetorPrateleira() {} ?
-
     @Override
     public int buscar(IBolo bolo) {
         return prateleira.indexOf(bolo);
@@ -34,11 +32,16 @@ public class VetorPrateleira implements IPrateleira {
 
     @Override
     public boolean inserir(IBolo bolo) {
-        if (cheia())
-            return false;
-        if (existe(bolo))
+        if (prateleira.contains(bolo)) {
             System.out.println("Bolo já cadastrado");
-        return prateleira.add(bolo);
+            return false;
+        }
+        if (cheia()) {
+            System.out.println("Prateleira cheia");
+            return false;
+        }
+        prateleira.add(bolo);
+        return true;
     }
 
     @Override

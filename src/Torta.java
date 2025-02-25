@@ -1,18 +1,34 @@
 public class Torta extends Bolo {
 
-    final boolean recheio;
-    final boolean cobertura;
+    private boolean recheio;
+    private boolean cobertura;
 
-    public Torta(int codigo, double custo, IFormato formato) {
+    public Torta(int codigo, double custo, String formato) {
         super(codigo, custo, formato);
-        this.recheio = true; // Por padrão, a torta tem recheio
-        this.cobertura = true; // Por padrão, a torta tem cobertura
+        setRecheio(true); // Por padrão, a torta tem recheio
+        setCobertura(true); // Por padrão, a torta tem cobertura
     }
 
-    public Torta(int codigo, double custo, IFormato formato, boolean recheio, boolean cobertura) {
+    public Torta(int codigo, double custo, String formato, boolean recheio, boolean cobertura) {
         super(codigo, custo, formato);
+        setRecheio(recheio);
+        setCobertura(cobertura);
+    }
+
+    public void setRecheio(boolean recheio) {
         this.recheio = recheio;
+    }
+
+    public void setCobertura(boolean cobertura) {
         this.cobertura = cobertura;
+    }
+
+    public boolean isRecheio() {
+        return recheio;
+    }
+
+    public boolean isCobertura() {
+        return cobertura;
     }
 
     public double preco() {
@@ -27,6 +43,11 @@ public class Torta extends Bolo {
     @Override
     public String toString() {
         return "Torta [recheio = " + recheio + ", cobertura = " + cobertura + ", " + super.toString();
+    }
+
+    @Override
+    public double area() {
+        return 0;
     }
 
 }

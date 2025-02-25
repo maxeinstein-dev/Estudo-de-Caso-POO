@@ -1,19 +1,23 @@
 public class BoloSimples extends Bolo {
 
-    final boolean semLactose;
+    private boolean semLactose;
 
-    public BoloSimples(int codigo, double custo, IFormato formato) {
+    public BoloSimples(int codigo, double custo, String formato) {
         super(codigo, custo, formato);
-        this.semLactose = false; // Por padrão, o bolo simples é com lactose
+        setSemLactose(false); // Por padrão, o bolo simples é com lactose
     }
 
-    public BoloSimples(int codigo, double custo, IFormato formato, boolean semLactose) {
+    public BoloSimples(int codigo, double custo, String formato, boolean semLactose) {
         super(codigo, custo, formato);
-        this.semLactose = semLactose;
+        setSemLactose(semLactose);
     }
 
     public boolean isSemLactose() {
         return semLactose;
+    }
+
+    public void setSemLactose(boolean semLactose) {
+        this.semLactose = semLactose;
     }
 
     public double preco() {
@@ -24,6 +28,11 @@ public class BoloSimples extends Bolo {
     @Override
     public String toString() {
         return "Bolo Simples [sem lactose = " + semLactose + ", " + super.toString();
+    }
+
+    @Override
+    public double area() {
+        return 0;
     }
 
 }
