@@ -33,7 +33,7 @@ public class VetorPrateleira implements IPrateleira {
     @Override
     public boolean inserir(IBolo bolo) {
         if (prateleira.contains(bolo)) {
-            System.out.println("Bolo já cadastrado");
+            System.out.println("Bolo ou torta já cadastrado");
             return false;
         }
         if (cheia()) {
@@ -50,11 +50,13 @@ public class VetorPrateleira implements IPrateleira {
     }
 
     @Override
-    public IBolo remover(int posicao) {
-        if (posicao >= 0 && posicao < prateleira.size()) {
-            return prateleira.remove(posicao);
+    public IBolo remover(int codigo) {
+        for (IBolo bolo : prateleira) {
+            if (((Bolo) bolo).getCodigo() == codigo) {
+                prateleira.remove(bolo);
+                return bolo;
+            }
         }
-        System.out.println("Bolo inexistente");
         return null;
     }
 

@@ -4,10 +4,10 @@ abstract class Bolo implements IBolo, IFormato {
     private double custo;
     private String formato; // quadrado, retangular ou circular
 
-    // public Bolo(double custo) {
-    // this.codigo = contador++;
-    // this.custo = custo;
-    // }
+    public Bolo(int codigo, double custo) {
+        setCodigo(codigo);
+        setCusto(custo);
+    }
 
     public Bolo(int codigo, double custo, String formato) {
         setCodigo(codigo);
@@ -21,10 +21,10 @@ abstract class Bolo implements IBolo, IFormato {
 
         switch (formato) {
             case "retangular":
-                precoBase += 1.2;
+                precoBase *= 1.2;
                 break;
             case "circular":
-                precoBase += 1.5;
+                precoBase *= 1.5;
                 break;
             case "quadrado":
                 break;
