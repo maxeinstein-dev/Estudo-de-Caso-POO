@@ -5,8 +5,23 @@ public class VetorPrateleira implements IPrateleira {
     final ArrayList<IBolo> prateleira;
     public int qtdBolo;
 
+    // public VetorPrateleira() {
+    // }
+
     public VetorPrateleira(int qtdBolo) {
         this.prateleira = new ArrayList<>();
+        setQtdBolo(qtdBolo);
+    }
+
+    public ArrayList<IBolo> getPrateleira() {
+        return prateleira;
+    }
+
+    public int getQtdBolo() {
+        return qtdBolo;
+    }
+
+    public void setQtdBolo(int qtdBolo) {
         this.qtdBolo = qtdBolo;
     }
 
