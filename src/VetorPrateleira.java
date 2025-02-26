@@ -83,18 +83,35 @@ public class VetorPrateleira implements IPrateleira {
 
     @Override
     public ArrayList<IBolo> listar() {
-        return new ArrayList<>(prateleira);
+        if (prateleira.isEmpty()) {
+            System.out.println("Prateleira vazia");
+        } else {
+            System.out.println("\nLista de bolos:");
+            for (IBolo bolo : prateleira) {
+                System.out.println(bolo);
+            }
+        }
+        return new ArrayList<>(prateleira); 
     }
 
     @Override
     public ArrayList<IBolo> listar(char tipoDoBolo) {
         ArrayList<IBolo> resultado = new ArrayList<>();
-        for (IBolo bolo : prateleira) {
-            if ((tipoDoBolo == 'S' && bolo instanceof BoloSimples) || (tipoDoBolo == 'T' && bolo instanceof Torta)) {
-                resultado.add(bolo);
-            }
+    for (IBolo bolo : prateleira) {
+        if ((tipoDoBolo == 'S' && bolo instanceof BoloSimples) || (tipoDoBolo == 'T' && bolo instanceof Torta)) {
+            resultado.add(bolo);
         }
-        return resultado;
+    }
+
+    if (resultado.isEmpty()) {
+        System.out.println("Nenhum bolo encontrado com o tipo especificado.");
+    } else {
+        System.out.println("\nLista de bolos do tipo " + (tipoDoBolo == 'S' ? "Simples" : "Torta") + ":");
+        for (IBolo bolo : resultado) {
+            System.out.println(bolo);
+        }
+    }
+    return resultado;
     }
 
 }

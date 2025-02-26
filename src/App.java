@@ -28,10 +28,7 @@ public class App {
         prateleira.inserir(torta4);
 
         // Listagem completa
-        System.out.println("\nLista de bolos:");
-        for (IBolo bolo : prateleira.listar()) {
-            System.out.println(bolo);
-        }
+        prateleira.listar();
 
         // Teste de remoção pelo código
         System.out.println("\nRemovendo o bolo com código 103...");
@@ -39,10 +36,7 @@ public class App {
         System.out.println(removido != null ? "Removido: " + removido : "Bolo não encontrado");
 
         // Listagem após remoção
-        System.out.println("\nLista de bolos após remoção:");
-        for (IBolo bolo : prateleira.listar()) {
-            System.out.println(bolo);
-        }
+        prateleira.listar();
 
         // Teste de remoção por objeto
         System.out.println("\nRemovendo o bolo 101 por referência...");
@@ -54,10 +48,10 @@ public class App {
         removido = prateleira.remover(110);
         System.out.println(removido != null ? "Removido: " + removido : "Bolo ou torta não encontrado");
 
+        // Lista de bolos por tipo
+        prateleira.listar('T');
+
         // Listagem final
-        System.out.println("\nLista final de bolos:");
-        for (IBolo bolo : prateleira.listar()) {
-            System.out.println(bolo);
-        }
+        prateleira.listar();
     }
 }
