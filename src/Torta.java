@@ -32,12 +32,26 @@ public class Torta extends Bolo {
     }
 
     public double preco() {
-        double precoBase = super.preco();
+
+        double precoBase = super.getCusto();
+
+        switch (super.getFormato()) {
+            case "retangular":
+                precoBase *= 1.2;
+                break;
+            case "circular":
+                precoBase *= 1.5;
+                break;
+            case "quadrado":
+                break;
+            default:
+                break;
+        }
         if (recheio)
             precoBase += 12.5;
         if (cobertura)
             precoBase += 20;
-        return precoBase;
+        return precoBase; // Calcula o preço da torta pelo formato
     }
 
     @Override

@@ -2,14 +2,15 @@ import java.util.ArrayList;
 
 public class VetorPrateleira implements IPrateleira {
 
-    final ArrayList<IBolo> prateleira;
-    public int qtdBolo;
+    private ArrayList<IBolo> prateleira;
+    private int qtdBolo;
 
-    // public VetorPrateleira() {
-    // }
+    public VetorPrateleira() {
+        this.prateleira = new ArrayList<>();
+    }
 
     public VetorPrateleira(int qtdBolo) {
-        this.prateleira = new ArrayList<>();
+        this();
         setQtdBolo(qtdBolo);
     }
 

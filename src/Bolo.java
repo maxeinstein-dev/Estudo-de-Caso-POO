@@ -15,25 +15,6 @@ abstract class Bolo implements IBolo, IFormato {
         setFormato(formato);
     }
 
-    @Override
-    public double preco() {
-        double precoBase = custo;
-
-        switch (formato) {
-            case "retangular":
-                precoBase *= 1.2;
-                break;
-            case "circular":
-                precoBase *= 1.5;
-                break;
-            case "quadrado":
-                break;
-            default:
-                break;
-        }
-        return precoBase; // Calcula o preço do bolo pelo formato
-    }
-
     public int getCodigo() {
         return codigo;
     }

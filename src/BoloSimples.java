@@ -21,8 +21,21 @@ public class BoloSimples extends Bolo {
     }
 
     public double preco() {
-        double precoBase = super.preco();
-        return semLactose ? precoBase + 35 : precoBase;
+        double precoBase = super.getCusto();
+
+        switch (super.getFormato()) {
+            case "retangular":
+                precoBase *= 1.2;
+                break;
+            case "circular":
+                precoBase *= 1.5;
+                break;
+            case "quadrado":
+                break;
+            default:
+                break;
+        }
+        return semLactose ? precoBase + 35 : precoBase; // Calcula o preço do bolo pelo formato
     }
 
     @Override
