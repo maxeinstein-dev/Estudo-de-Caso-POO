@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public interface IPrateleira {
 
+    // Conceito de interface com métodos abstratos
     public abstract int buscar(IBolo bolo);
 
     public abstract boolean cheia();

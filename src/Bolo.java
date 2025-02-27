@@ -4,11 +4,13 @@ abstract class Bolo implements IBolo, IFormato {
     private double custo;
     private String formato; // quadrado, retangular ou circular
 
+    // Encapsulamento
     public Bolo(int codigo, double custo) {
         setCodigo(codigo);
         setCusto(custo);
     }
 
+    // Encapsulamento
     public Bolo(int codigo, double custo, String formato) {
         setCodigo(codigo);
         setCusto(custo);
@@ -39,6 +41,7 @@ abstract class Bolo implements IBolo, IFormato {
         this.formato = formato;
     }
 
+    // Polimorfismo
     @Override
     public boolean equals(Object obj) {
         boolean resultado = false;
@@ -52,6 +55,7 @@ abstract class Bolo implements IBolo, IFormato {
         return resultado;
     }
 
+    // Polimorfismo
     @Override
     public String toString() {
         return "codigo = " + codigo + ", custo = " + custo + ", formato = " + formato + ", preço = " + preco()

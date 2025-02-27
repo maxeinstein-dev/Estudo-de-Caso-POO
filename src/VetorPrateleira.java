@@ -9,6 +9,7 @@ public class VetorPrateleira implements IPrateleira {
         this.prateleira = new ArrayList<>();
     }
 
+    // Encapsulamento
     public VetorPrateleira(int qtdBolo) {
         this();
         setQtdBolo(qtdBolo);
@@ -92,27 +93,27 @@ public class VetorPrateleira implements IPrateleira {
                 System.out.println(bolo);
             }
         }
-        return new ArrayList<>(prateleira); 
+        return new ArrayList<>(prateleira);
     }
 
     @Override
     public ArrayList<IBolo> listar(char tipoDoBolo) {
         ArrayList<IBolo> resultado = new ArrayList<>();
-    for (IBolo bolo : prateleira) {
-        if ((tipoDoBolo == 'S' && bolo instanceof BoloSimples) || (tipoDoBolo == 'T' && bolo instanceof Torta)) {
-            resultado.add(bolo);
+        for (IBolo bolo : prateleira) {
+            if ((tipoDoBolo == 'S' && bolo instanceof BoloSimples) || (tipoDoBolo == 'T' && bolo instanceof Torta)) {
+                resultado.add(bolo);
+            }
         }
-    }
 
-    if (resultado.isEmpty()) {
-        System.out.println("Nenhum bolo encontrado com o tipo especificado.");
-    } else {
-        System.out.println("\nLista de bolos do tipo " + (tipoDoBolo == 'S' ? "Simples" : "Torta") + ":");
-        for (IBolo bolo : resultado) {
-            System.out.println(bolo);
+        if (resultado.isEmpty()) {
+            System.out.println("Nenhum bolo encontrado com o tipo especificado.");
+        } else {
+            System.out.println("\nLista de bolos do tipo " + (tipoDoBolo == 'S' ? "Simples" : "Torta") + ":");
+            for (IBolo bolo : resultado) {
+                System.out.println(bolo);
+            }
         }
-    }
-    return resultado;
+        return resultado;
     }
 
 }
