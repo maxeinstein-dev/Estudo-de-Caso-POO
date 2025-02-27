@@ -1,3 +1,4 @@
+//Classe abstrata
 abstract class Bolo implements IBolo, IFormato {
 
     private int codigo;
